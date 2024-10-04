@@ -16,13 +16,19 @@ pipeline {
                 echo 'Test Step: We run testing tool like pytest here'
 
                 # TODO fill out the path to conda here
-                # sudo /PATH/TO/CONDA init
+                python3 -m venv mlip
 
                 # TODO Complete the command to run pytest
-                # sudo /PATH/TO/CONDA run -n <Envinronment Name> <Command you want to run>
+                source mlip/bin/activate
 
-                echo 'pytest not runned'
-                exit 1 #comment this line after implementing Jenkinsfile
+                pip install -r requirements.txt
+
+                pytest
+
+                deactivate
+
+                echo 'pytest done'
+                # exit 1 #comment this line after implementing Jenkinsfile
                 '''
 
             }
